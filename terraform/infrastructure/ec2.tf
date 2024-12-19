@@ -57,6 +57,7 @@ resource "aws_instance" "main" {
   count = length(var.ec2_config)
   ami = var.ec2_config[count.index].ami
   instance_type = var.ec2_config[count.index].instance_type
+  associate_public_ip_address = true
   key_name = aws_key_pair.main.key_name
   vpc_security_group_ids = [ aws_security_group.main.id ]
 
